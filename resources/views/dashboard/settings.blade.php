@@ -49,12 +49,6 @@
                     </li>
                     <!--end::Nav item-->
 
-                    <!--begin::Nav item-->
-                    <li class="nav-item">
-                        <a class="nav-link text-active-primary me-6 setting-label" id="about-website-settings-label" href="javascript:" onclick="changeSettingView('about-website')" >{{ __("About us") }}</a>
-                    </li>
-                    <!--end::Nav item-->
-
                 </ul>
             </div>
             <!--begin::Navs-->
@@ -68,39 +62,39 @@
     @csrf
 
     <!-- Begin :: General Settings Card -->
-    <input type="hidden" name="setting_type" value="general" id="setting-type-inp">
+        <input type="hidden" name="setting_type" value="general" id="setting-type-inp">
 
-    <!-- Begin :: General Settings Card -->
-    <div class="card card-flush setting-card" id="general-settings-card">
-        <!--begin::Card header-->
-        <div class="card-header pt-8">
+        <!-- Begin :: General Settings Card -->
+        <div class="card card-flush setting-card" id="general-settings-card">
+            <!--begin::Card header-->
+            <div class="card-header pt-8">
 
-            <div class="card-title">
-                <h2>{{ __("General") }}</h2>
-            </div>
+                <div class="card-title">
+                    <h2>{{ __("General") }}</h2>
+                </div>
 
-            <div class="card-title">
+                <div class="card-title">
 
-                <!-- begin :: Submit btn -->
-                <button type="submit" class="btn btn-primary mx-4" id="submit-btn-general">
+                    <!-- begin :: Submit btn -->
+                    <button type="submit" class="btn btn-primary mx-4" id="submit-btn-general">
 
-                    <span class="indicator-label">{{ __("Save") }}</span>
+                        <span class="indicator-label">{{ __("Save") }}</span>
 
-                    <!-- begin :: Indicator -->
-                    <span class="indicator-progress">{{ __("Please wait ...") }}
+                        <!-- begin :: Indicator -->
+                        <span class="indicator-progress">{{ __("Please wait ...") }}
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
-                    <!-- end   :: Indicator -->
+                        <!-- end   :: Indicator -->
 
-                </button>
-                <!-- end   :: Submit btn -->
+                    </button>
+                    <!-- end   :: Submit btn -->
 
+                </div>
             </div>
-        </div>
-        <!--end::Card header-->
+            <!--end::Card header-->
 
-        <!-- Begin :: Card body -->
-        <div class="card-body">
+            <!-- Begin :: Card body -->
+            <div class="card-body">
 
                 <!-- Begin :: Input group -->
                 <div class="fv-row row mb-15">
@@ -213,7 +207,7 @@
                     <div class="col-md-6">
 
                         <label class="form-label">{{ __("Phone") }}</label>
-                         <input type="text" class="form-control" name="phone" value="{{ settings()->get('phone') ?? '' }}" id="phone_inp" placeholder="{{ __("Enter the phone") }}">
+                        <input type="text" class="form-control" name="phone" value="{{ settings()->get('phone') ?? '' }}" id="phone_inp" placeholder="{{ __("Enter the phone") }}">
                         <p class="invalid-feedback" id="phone" ></p>
 
                     </div>
@@ -225,44 +219,6 @@
                         <label class="form-label">{{ __("Whatsapp") }}</label>
                         <input type="text" class="form-control" name="whatsapp" value="{{ settings()->get('whatsapp') ?? '' }}" id="whatsapp_inp" placeholder="{{ __("Enter the whatsapp") }}">
                         <p class="invalid-feedback" id="whatsapp" ></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                </div>
-                <!-- End   :: Input group -->
-
-                <!-- Begin :: Input group -->
-                <div class="fv-row row mb-15">
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <label class="form-label">{{ __("Tax in percentage") }}</label>
-                        <input type="number" min="0" class="form-control" name="tax" value="{{ settings()->get('tax') ?? '' }}" id="tax_inp" placeholder="{{ __("Enter the tax in percentage") }}">
-                        <p class="invalid-feedback" id="tax" ></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <div class="d-flex justify-content-between align-items-center mt-12">
-
-                            <label class="form-label">{{ __("Maintenance mode") }}</label>
-
-                            <div class="form-check form-check-custom form-check-solid my-auto" >
-                                <input class="form-check-input" type="radio" value="1" name="maintenance_mode" id="active-radio-btn"   {{ settings()->get('maintenance_mode') == "1" ? 'checked' : '' }} />
-                                <label class="form-check-label me-10" for="active-radio-btn"> {{ __("active") }} </label>
-
-                                <input class="form-check-input" type="radio" value="0" name="maintenance_mode" id="inactive-radio-btn"  {{ settings()->get('maintenance_mode') == "0" ? 'checked' : '' }} />
-                                <label class="form-check-label" for="inactive-radio-btn"> {{ __("inactive") }} </label>
-                            </div>
-
-                        </div>
-                        <p class="invalid-feedback" id="maintenance_mode" ></p>
-
 
                     </div>
                     <!-- End   :: Col -->
@@ -301,45 +257,73 @@
                 </div>
                 <!-- End   :: Input group -->
 
-        </div>
-        <!-- End   :: Card body -->
+                <!-- Begin :: Input group -->
+                <div class="fv-row row mb-15">
 
-    </div>
-    <!-- End   :: General Settings Card -->
+                    <!-- Begin :: Col -->
+                    <div class="col-md-5">
+
+                        <div class="d-flex justify-content-between align-items-center mt-12">
+
+                            <label class="form-label">{{ __("Maintenance mode") }}</label>
+
+                            <div class="form-check form-check-custom form-check-solid my-auto" >
+                                <input class="form-check-input" type="radio" value="1" name="maintenance_mode" id="active-radio-btn"   {{ settings()->get('maintenance_mode') == "1" ? 'checked' : '' }} />
+                                <label class="form-check-label me-10" for="active-radio-btn"> {{ __("active") }} </label>
+
+                                <input class="form-check-input" type="radio" value="0" name="maintenance_mode" id="inactive-radio-btn"  {{ settings()->get('maintenance_mode') == "0" ? 'checked' : '' }} />
+                                <label class="form-check-label" for="inactive-radio-btn"> {{ __("inactive") }} </label>
+                            </div>
+
+                        </div>
+                        <p class="invalid-feedback" id="maintenance_mode" ></p>
 
 
-    <!-- Begin :: Seo Settings Card -->
-    <div class="card card-flush setting-card" style="display:none" id="seo-settings-card">
-        <!--begin::Card header-->
-        <div class="card-header pt-8">
+                    </div>
+                    <!-- End   :: Col -->
 
-            <div class="card-title">
-                <h2>Seo</h2>
+                </div>
+                <!-- End   :: Input group -->
+
             </div>
+            <!-- End   :: Card body -->
 
-            <div class="card-title">
+        </div>
+        <!-- End   :: General Settings Card -->
 
-                <!-- begin :: Submit btn -->
-                <button type="submit" class="btn btn-primary mx-4" id="submit-btn-seo">
 
-                    <span class="indicator-label">{{ __("Save") }}</span>
+        <!-- Begin :: Seo Settings Card -->
+        <div class="card card-flush setting-card" style="display:none" id="seo-settings-card">
+            <!--begin::Card header-->
+            <div class="card-header pt-8">
 
-                    <!-- begin :: Indicator -->
-                    <span class="indicator-progress">{{ __("Please wait ...") }}
+                <div class="card-title">
+                    <h2>Seo</h2>
+                </div>
+
+                <div class="card-title">
+
+                    <!-- begin :: Submit btn -->
+                    <button type="submit" class="btn btn-primary mx-4" id="submit-btn-seo">
+
+                        <span class="indicator-label">{{ __("Save") }}</span>
+
+                        <!-- begin :: Indicator -->
+                        <span class="indicator-progress">{{ __("Please wait ...") }}
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                     </span>
-                    <!-- end   :: Indicator -->
+                        <!-- end   :: Indicator -->
 
-                </button>
-                <!-- end   :: Submit btn -->
+                    </button>
+                    <!-- end   :: Submit btn -->
+
+                </div>
 
             </div>
+            <!--end::Card header-->
 
-        </div>
-        <!--end::Card header-->
-
-        <!-- Begin :: Card body -->
-        <div class="card-body">
+            <!-- Begin :: Card body -->
+            <div class="card-body">
 
                 <!-- Begin :: Input group -->
                 <div class="fv-row row mb-15">
@@ -393,46 +377,46 @@
                 </div>
                 <!-- End   :: Input group -->
 
-        </div>
-        <!-- End   :: Card body -->
-
-    </div>
-    <!-- End   :: Seo Settings Card -->
-
-
-    <!-- Begin :: Website Settings Card -->
-    <div class="card card-flush setting-card" style="display:none" id="website-settings-card">
-
-        <!-- Begin :: Card header-->
-        <div class="card-header pt-8">
-
-            <div class="card-title">
-                <h2>{{ __("Website") }}</h2>
             </div>
+            <!-- End   :: Card body -->
 
-            <div class="card-title">
+        </div>
+        <!-- End   :: Seo Settings Card -->
 
-                <!-- begin :: Submit btn -->
-                <button type="submit" class="btn btn-primary mx-4" id="submit-btn-website">
 
-                    <span class="indicator-label">{{ __("Save") }}</span>
+        <!-- Begin :: Website Settings Card -->
+        <div class="card card-flush setting-card" style="display:none" id="website-settings-card">
 
-                    <!-- begin :: Indicator -->
-                    <span class="indicator-progress">{{ __("Please wait ...") }}
+            <!-- Begin :: Card header-->
+            <div class="card-header pt-8">
+
+                <div class="card-title">
+                    <h2>{{ __("Website") }}</h2>
+                </div>
+
+                <div class="card-title">
+
+                    <!-- begin :: Submit btn -->
+                    <button type="submit" class="btn btn-primary mx-4" id="submit-btn-website">
+
+                        <span class="indicator-label">{{ __("Save") }}</span>
+
+                        <!-- begin :: Indicator -->
+                        <span class="indicator-progress">{{ __("Please wait ...") }}
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
-                    <!-- end   :: Indicator -->
+                        <!-- end   :: Indicator -->
 
-                </button>
-                <!-- end   :: Submit btn -->
+                    </button>
+                    <!-- end   :: Submit btn -->
+
+                </div>
 
             </div>
+            <!-- End   :: Card header-->
 
-        </div>
-        <!-- End   :: Card header-->
-
-        <!-- Begin :: Card body -->
-        <div class="card-body">
+            <!-- Begin :: Card body -->
+            <div class="card-body">
 
 
                 <!-- Begin :: Input group -->
@@ -490,107 +474,11 @@
 
 
 
-        </div>
-        <!-- End   :: Card body -->
-
-    </div>
-    <!-- End   :: Website Settings Card -->
-
-
-    <!-- Begin :: About Website Settings Card -->
-    <div class="card card-flush setting-card" style="display:none" id="about-website-settings-card">
-
-        <!-- Begin :: Card header-->
-        <div class="card-header pt-8">
-
-            <div class="card-title">
-                <h2>{{ __("About us") }}</h2>
             </div>
-
-            <div class="card-title">
-
-                <!-- begin :: Submit btn -->
-                <button type="submit" class="btn btn-primary mx-4" id="submit-btn-about-website">
-
-                    <span class="indicator-label">{{ __("Save") }}</span>
-
-                    <!-- begin :: Indicator -->
-                    <span class="indicator-progress">{{ __("Please wait ...") }}
-                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                        </span>
-                    <!-- end   :: Indicator -->
-
-                </button>
-                <!-- end   :: Submit btn -->
-
-            </div>
+            <!-- End   :: Card body -->
 
         </div>
-        <!-- End   :: Card header-->
-
-        <!-- Begin :: Card body -->
-        <div class="card-body">
-
-
-                <!-- Begin :: Input group -->
-                <div class="fv-row row mb-15">
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <label class="form-label">{{ __("About us in arabic") }}</label>
-                        <textarea id="tinymce_about_us_ar" name="about_us_ar" class="tinymce">{!! settings()->get('about_us_ar') ?? '' !!}</textarea>
-                        <p class="text-danger invalid-feedback" id="about_us_ar"></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <label class="form-label">{{ __("About us in english") }}</label>
-                        <textarea id="tinymce_about_us_en" name="about_us_en" class="tinymce">{!! settings()->get('about_us_en') ?? '' !!}</textarea>
-                        <p class="text-danger error-element" id="about_us_en"></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                </div>
-                <!-- End   :: Input group -->
-
-                <!-- Begin   :: Input group -->
-                <div class="fv-row row mb-15">
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <label class="form-label">{{ __("footer text in arabic") }}</label>
-                        <textarea class="form-control form-control form-control" name="footer_text_ar" id="footer_text_ar_inp" data-kt-autosize="true">{{ settings()->get('footer_text_ar') ?? '' }}</textarea>
-                        <p class="invalid-feedback" id="footer_text_ar" ></p>
-
-                    </div>
-                    <!-- End :: Col -->
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <label class="form-label">{{ __("footer text in english") }}</label>
-                        <textarea class="form-control form-control form-control" name="footer_text_en" id="footer_text_en_inp" data-kt-autosize="true">{{ settings()->get('footer_text_en') ?? '' }}</textarea>
-                        <p class="invalid-feedback" id="footer_text_en" ></p>
-
-                    </div>
-                    <!-- End :: Col -->
-
-                </div>
-                <!-- End   :: Input group -->
-
-
-
-        </div>
-        <!-- End   :: Card body -->
-
-    </div>
-    <!-- End   :: About Website Settings Card -->
+        <!-- End   :: Website Settings Card -->
 
     </form>
     <!--end::Form-->

@@ -27,15 +27,15 @@
                                 <span class="svg-icon svg-icon-4 me-1">
                                     <i class="fas fa-briefcase"></i>
                                 </span>
-                                <!--end::Svg Icon-->
+                                    <!--end::Svg Icon-->
                             @foreach (auth()->user()->roles as $role)
-                                @if ($loop->first)
-                                    {{ $role->name }}
-                                @else
-                                    {{ ',' . $role->name }}
+                                        @if ($loop->first)
+                                            {{ $role->name }}
+                                        @else
+                                            {{ ',' . $role->name }}
 
-                                @endif
-                            @endforeach
+                                        @endif
+                                    @endforeach
                             </span>
 
                             </div>
@@ -72,20 +72,20 @@
             <!--begin::Form-->
             <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <form action="{{ route('dashboard.update-profile') }}" class="submitted-form" method="post" data-redirection-url="{{ route('dashboard.index') }}" data-success-message="{{ __('Profile has been updated successfully') }}">
-                    @csrf
-                    @method('PUT')
-                    <!--begin::Card body-->
+                @csrf
+                @method('PUT')
+                <!--begin::Card body-->
                     <div class="card-body  p-9">
 
                         <!--begin::Input group-->
                         <div class="row mb-15">
-                            <label class="col-lg-2 required fs-5 fw-bold mb-2 d-flex align-items-center">{{ __("Photo identification") }}</label>
+                            <label class="col-lg-2 required fs-5 fw-bold mb-2 d-flex align-items-center">{{ __("Personal image") }}</label>
 
                             <div class="col-lg-10 form-floating text-center">
 
                                 <!--begin::Image input-->
-                                <x-dashboard.upload-image-inp name="photo_identification" :image="auth()->user()->photo_identification" directory="Admins" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
-                                <p class="invalid-feedback" id="photo_identification"></p>
+                                <x-dashboard.upload-image-inp name="image" :image="auth()->user()->image" directory="Admins" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
+                                <p class="invalid-feedback" id="image"></p>
                                 <!--end::Image input-->
 
                             </div>
@@ -110,11 +110,11 @@
                             <label class="col-lg-2 col-form-label required fw-bold fs-6 d-flex align-items-center">{{ __("Phone") }}</label>
                             <!--end::Label-->
                             <!--begin::Col-->
-                                <div class="col-lg-10 form-floating">
-                                    <input type="text" class="form-control" id="phone_inp" name="phone" placeholder="example" value="{{ auth()->user()->phone }}"/>
-                                    <label style="margin-right:8px" for="phone_inp">{{ __("Enter the phone") }}</label>
-                                    <p class="invalid-feedback" id="phone" ></p>
-                                </div>
+                            <div class="col-lg-10 form-floating">
+                                <input type="text" class="form-control" id="phone_inp" name="phone" placeholder="example" value="{{ auth()->user()->phone }}"/>
+                                <label style="margin-right:8px" for="phone_inp">{{ __("Enter the phone") }}</label>
+                                <p class="invalid-feedback" id="phone" ></p>
+                            </div>
                             <!--end::Col-->
                         </div>
                         <!--end::Input group-->
@@ -124,11 +124,11 @@
                             <label class="col-lg-2 col-form-label required fw-bold fs-6 d-flex align-items-center">{{ __("Email") }}</label>
                             <!--end::Label-->
                             <!--begin::Col-->
-                                <div class="col-lg-10 form-floating">
-                                    <input type="text" class="form-control" id="email_inp" name="email" placeholder="example" value="{{ auth()->user()->email }}"/>
-                                    <label style="margin-right:8px" for="email_inp">{{ __("Enter the email") }}</label>
-                                    <p class="invalid-feedback" id="email" ></p>
-                                </div>
+                            <div class="col-lg-10 form-floating">
+                                <input type="text" class="form-control" id="email_inp" name="email" placeholder="example" value="{{ auth()->user()->email }}"/>
+                                <label style="margin-right:8px" for="email_inp">{{ __("Enter the email") }}</label>
+                                <p class="invalid-feedback" id="email" ></p>
+                            </div>
                             <!--end::Col-->
                         </div>
                         <!--end::Input group-->
@@ -154,9 +154,9 @@
             <!--begin::Form-->
             <div class="tab-pane fade" id="pills-password" role="tabpanel" aria-labelledby="pills-password-tab">
                 <form action="{{ route('dashboard.update-password') }}" class="submitted-form" method="post" data-redirection-url="{{ route('dashboard.index') }}" data-success-message="{{ __('Password has been updated successfully') }}">
-                    @csrf
-                    @method('PUT')
-                    <!--begin::Card body-->
+                @csrf
+                @method('PUT')
+                <!--begin::Card body-->
                     <div class="card-body  p-9">
 
                         <!--begin::Input group-->

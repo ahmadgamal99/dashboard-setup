@@ -20,7 +20,7 @@ class AdminController extends Controller
 
         if ($request->ajax())
         {
-            $data = getModelData( model: new Admin(), andsFilters: [['email', '!=', 'support@xample.com']] );
+            $data = getModelData( model: new Admin(), andsFilters: [['email', '!=', 'support@example.com']] );
 
             return response()->json($data);
         }
@@ -96,7 +96,14 @@ class AdminController extends Controller
             'name'     => ['required', 'string', 'max:255'],
             'phone'    => ['required','numeric','unique:admins,id,' . auth()->id()],
             'email'    => ['required','string','email','unique:admins,id,' . auth()->id() ],
+            'image'    => ['nullable','mimes:jpeg,jpg,png,gif,svg' , 'max:10000'] ,
         ]);
+
+        if ( $request->hasFile('image') )
+        {
+            deleteImage(auth()->user()->image, 'Admins');
+            $data['image'] = uploadFile( $request->file('image') , 'Admins' );
+        }
 
         auth()->user()->update($data);
 

@@ -20,13 +20,13 @@ class RoleSeeder extends Seeder
         $categories  = Role::$modules;
 
         $actions =
-        [
-            'view',
-            'show',
-            'create',
-            'update',
-            'delete',
-        ];
+            [
+                'view',
+                'show',
+                'create',
+                'update',
+                'delete',
+            ];
 
 
         // indices of unused actions from the above array
@@ -64,26 +64,6 @@ class RoleSeeder extends Seeder
         $adminRole  = Role::create([
             'name_ar'    => 'صلاحيات إفتراضية',
             'name_en'    => 'default roles',
-        ]);
-
-        Role::create([
-            'name_ar'    => 'العمليات',
-            'name_en'    => 'Operation',
-        ]);
-
-        Role::create([
-            'name_ar'    => 'السلامة',
-            'name_en'    => 'Safety',
-        ]);
-
-        Role::create([
-            'name_ar'    => 'Fleet',
-            'name_en'    => 'Fleet',
-        ]);
-
-        Role::create([
-            'name_ar'    => 'المالية',
-            'name_en'    => 'Finance',
         ]);
 
 

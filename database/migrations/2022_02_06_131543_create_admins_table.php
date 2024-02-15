@@ -19,10 +19,7 @@ class CreateAdminsTable extends Migration
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->string('password');
-            $table->string('photo_identification')->nullable();
-            $table->boolean('login_allowed')->default(true);
-
-            $table->string('image')->default('default.png');
+            $table->string('image')->nullable();
             $table->string('device_token')->nullable();
             $table->boolean('needs_to_clear_cache')->default(0); // this column is set to true if an action occurred needs the cache to be updated
             $table->rememberToken();
