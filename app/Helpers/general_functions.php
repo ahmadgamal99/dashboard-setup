@@ -22,6 +22,54 @@ if(!function_exists('getLocale')){
     }
 }
 
+if(!function_exists('getAllLanguages')){
+
+    function getAllLanguages(): \Illuminate\Support\Collection
+    {
+        return collect([
+            [
+                "id" => 1,
+                "name" => "العربية",
+                "code" => "ar",
+                "flag" => "ar.png",
+                "is_default" => 1,
+                "is_available" => 1,
+                "direction" => "rtl"
+            ],
+            [
+                "id" => 2,
+                "name" => "English",
+                "code" => "en",
+                "flag" => "en.png",
+                "is_default" => 0,
+                "is_available" => 1,
+                "direction" => "ltr",
+            ],
+        ]);
+    }
+
+}
+
+if(!function_exists('getDefaultLanguage')){
+
+    function getDefaultLanguage()
+    {
+        return getAllLanguages()->firstWhere('is_default','=',1);
+    }
+
+}
+
+if(!function_exists('getDefaultLanguageCode')){
+
+    function getDefaultLanguageCode(): string
+    {
+        $defaultLang = getDefaultLanguage();
+
+        return $defaultLang ? $defaultLang['code'] : 'ar';
+    }
+
+}
+
 if ( !function_exists('isDarkMode') ) {
 
     function isDarkMode() : bool

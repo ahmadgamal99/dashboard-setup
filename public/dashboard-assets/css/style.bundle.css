@@ -46477,3 +46477,7 @@ body {
 .select2-selection{
     height: 50.75px !important;
 }
+
+.form-check-input{
+    border-radius: 25px;
+}

@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Http\Scopes\WithoutDefaultRole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Schema\Builder;
 
 
 class Role extends Model
@@ -22,32 +21,9 @@ class Role extends Model
     public static $modules = [
         'admins',
         'roles',
-        'certificates',
-        'certificates_categories',
-        'certificates_transactions',
-        'contractors',
-        'distances',
-        'finances',
-        'finances_types',
-        'installation_orders',
-        'installation_orders_items',
-        'installation_orders_tasks',
-        'jobs',
-        'locations',
-        'locations_types',
-        'materials',
-        'materials_groups',
-        'materials_prices',
-        'petty_cashes',
-        'petty_cashes_types',
-        'pickup_orders',
-        'status_trackers',
-        'teams',
-        'vehicles',
-        'vehicles_maintenance',
         'settings',
         'recycle_bin',
-        'reports',
+        'reports'
     ];
 
     protected static function booted()
