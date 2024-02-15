@@ -9,13 +9,6 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
-    public $modules  = [
-        'admins',
-        'roles',
-        'settings',
-        'recycle_bin',
-        'reports',
-    ];
 
     public function index()
     {
@@ -24,7 +17,7 @@ class RoleController extends Controller
         $roles      = Role::withoutGlobalScopes()->with('abilities:id,category,action','admins:id')->get();
         $abilities  = Ability::select('id','name','category','action')->get();
 
-        return view('dashboard.roles.index',[ 'roles' => $roles , 'abilities' => $abilities , 'modules' => $this->modules]);
+        return view('dashboard.roles.index',[ 'roles' => $roles , 'abilities' => $abilities , 'modules' => Role::$modules]);
     }
 
     public function show(Role $role,Request $request)
@@ -35,7 +28,7 @@ class RoleController extends Controller
         $abilities  = Ability::select('id','name','category','action')->get();
 
         if ( ! $request->ajax() )
-            return view('dashboard.roles.show',[ 'role' => $role , 'abilities' => $abilities , 'modules' => $this->modules]);
+            return view('dashboard.roles.show',[ 'role' => $role , 'abilities' => $abilities , 'modules' => Role::$modules]);
          else
             return response()->json(['name_ar' => $role['name_ar'] , 'name_en' => $role['name_en'] , 'role_abilities' => $role['abilities'] ]);
     }

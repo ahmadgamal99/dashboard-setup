@@ -1,4 +1,4 @@
-@extends('partials.dashboard.master')
+@extends('partials.master')
 @section('content')
 
     <!-- begin :: Subheader -->
@@ -44,41 +44,67 @@
                 <!-- begin :: Card header -->
                 <div class="card-header d-flex align-items-center">
                     <h3 class="fw-bolder text-dark">{{ __("Admin") . " : " . $admin->name  }}</h3>
+                    <div class="form-check form-switch form-check-custom form-check-solid mb-2">
+                        <label class="fs-5 fw-bold" for="login-switch">{{ __("Login allowed ?") }}</label>
+                        <input class="form-check-input mx-2" style="height: 18px;width:36px;" type="checkbox" name="login_allowed" id="login-switch" {{ $admin->login_allowed ? 'checked' : '' }} disabled />
+                    </div>
                 </div>
                 <!-- end   :: Card header -->
 
                 <!-- begin :: Inputs wrapper -->
                 <div class="inputs-wrapper">
 
+                    <!-- begin :: Row -->
+                    <div class="row mb-8">
+                        <!-- begin :: Column -->
+                        <div class="col-md-12 fv-row d-flex flex-column align-items-center">
+
+                            <div class="d-flex flex-column">
+                                <!-- begin :: Upload image component -->
+                                <label class="text-center fw-bold mb-4">{{ __("Photo identification") }}</label>
+                                <x-dashboard.upload-image-inp name="photo_identification" :image="$admin->photo_identification" directory="Admins" placeholder="default.jpg" type="view" ></x-dashboard.upload-image-inp>
+                                <!-- end   :: Upload image component -->
+                            </div>
+                            <p class="invalid-feedback text-center" id="photo_identification" ></p>
+
+                        </div>
+                        <!-- end   :: Column -->
+                    </div>
+                    <!-- end   :: Row -->
 
                     <!-- begin :: Row -->
                     <div class="row mb-8">
 
                         <!-- begin :: Column -->
-                        <div class="col-md-6 fv-row">
-
+                        <div class="col-md-4 fv-row">
                             <label class="fs-5 fw-bold mb-2">{{ __("Name") }}</label>
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="name_inp" name="name" value="{{ $admin->name }}" readonly/>
                                 <label for="name_inp">{{ __("Enter the name") }}</label>
                             </div>
                             <p class="invalid-feedback" id="name" ></p>
-
-
                         </div>
                         <!-- end   :: Column -->
 
                         <!-- begin :: Column -->
-                        <div class="col-md-6 fv-row">
-
+                        <div class="col-md-4 fv-row">
                             <label class="fs-5 fw-bold mb-2">{{ __("Phone") }}</label>
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="phone_inp" name="phone" value="{{ $admin['phone'] }}" readonly/>
                                 <label for="phone_inp">{{ __("Enter the phone") }}</label>
                             </div>
                             <p class="invalid-feedback" id="phone" ></p>
+                        </div>
+                        <!-- end   :: Column -->
 
-
+                        <!-- begin :: Column -->
+                        <div class="col-md-4 fv-row">
+                            <label class="fs-5 fw-bold mb-2">{{ __("Email") }}</label>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="email_inp" name="email" value="{{ $admin['email'] }}" readonly/>
+                                <label for="email_inp">{{ __("Enter the email") }}</label>
+                            </div>
+                            <p class="invalid-feedback" id="email" ></p>
                         </div>
                         <!-- end   :: Column -->
 
@@ -90,21 +116,6 @@
 
                         <!-- begin :: Column -->
                         <div class="col-md-6 fv-row">
-
-                            <label class="fs-5 fw-bold mb-2">{{ __("Email") }}</label>
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="email_inp" name="email" value="{{ $admin['email'] }}" readonly/>
-                                <label for="email_inp">{{ __("Enter the email") }}</label>
-                            </div>
-                            <p class="invalid-feedback" id="email" ></p>
-
-
-                        </div>
-                        <!-- end   :: Column -->
-
-                        <!-- begin :: Column -->
-                        <div class="col-md-6 fv-row">
-
                             <label class="fs-5 fw-bold mb-2">{{ __("Roles") }}</label>
                             <div class="form-floating">
                                 <select class="form-select py-1" data-control="select2" name="roles[]" multiple id="roles-sp" data-placeholder="{{ __("Choose the roles") }}" data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}" disabled>
@@ -114,10 +125,22 @@
                                 </select>
                             </div>
                             <p class="invalid-feedback" id="roles" ></p>
-
                         </div>
                         <!-- end   :: Column -->
 
+                        <!-- begin :: Column -->
+                        <div class="col-md-6 fv-row">
+                            <label class="fs-5 fw-bold mb-2">{{ __("Teams") }}</label>
+                            <div class="form-floating">
+                                <select class="form-select py-1" data-control="select2" name="teams[]" multiple id="teams-sp" data-placeholder="{{ __("Choose the teams") }}" data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}" disabled>
+                                    @foreach( $teams as $team)
+                                        <option value="{{ $team->id }}" {{ $admin->teams->pluck('id')->contains( $team->id ) ? 'selected' : '' }}> {{ $team->name }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <p class="invalid-feedback" id="teams" ></p>
+                        </div>
+                        <!-- end   :: Column -->
 
                     </div>
                     <!-- end   :: Row -->

@@ -44,7 +44,7 @@ let KTDatatable = function () {
                     render: function (data, type, row) {
 
                         let deleteBtn = ''
-                        if (!( row.id == 1 || row.id == currentUserId ))
+                        if (!( row.id === 1 || row.id === currentUserId ))
                         {
                             deleteBtn = `<div class="menu-item px-3">
                                                 <a href="#" class="menu-link px-3 d-flex justify-content-between delete-row" data-row-id="${row.id}" data-type="${translate('admin')}">
@@ -102,6 +102,7 @@ let KTDatatable = function () {
         datatable.on('draw', function () {
             handleDeleteRows();
             KTMenu.createInstances();
+            $('body').append(`<script src='${lightboxPath}' ></script>`)
         });
     }
 
@@ -135,9 +136,8 @@ let KTDatatable = function () {
         $('.delete-row').click(function () {
 
             let rowId = $(this).data('row-id');
-            let type  = $(this).data('type');
 
-            deleteAlert(type).then(function (result) {
+            deleteAlert().then(function (result) {
 
                 if (result.value) {
 
@@ -151,7 +151,7 @@ let KTDatatable = function () {
 
                             setTimeout( () => {
 
-                                successAlert(`${translate('You have deleted the') + ' ' + type + ' ' + translate('successfully !')} `)
+                                successAlert(`${translate('You have deleted this item successfully !')} `)
                                     .then(function () {
                                         datatable.draw();
                                     });

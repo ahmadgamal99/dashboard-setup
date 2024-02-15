@@ -317,7 +317,7 @@ $(document).ready(function () {
                 applyLabel: translate('Apply'),
             },
             maxYear: parseInt(moment().format("YYYY"),10)
-        }).val('').on('cancel.daterangepicker', function(ev, picker) {
+        }).on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('').trigger('change');
         });
     }

@@ -1,4 +1,4 @@
-@extends('partials.dashboard.master')
+@extends('partials.master')
 @push('styles')
     <link href="{{ asset('dashboard-assets/css/datatables' . ( isDarkMode() ?  '.dark' : '' ) .'.bundle.css') }}" rel="stylesheet" type="text/css"/>
 @endpush
@@ -48,7 +48,7 @@
                 <div class="d-flex align-items-center position-relative my-1 mb-2 mb-md-0">
 
                         <span class="svg-icon svg-icon-1 position-absolute ms-6">
-                               <i class="fa fa-search fa-lg" ></i>
+                            <i class="fa fa-search fa-lg" ></i>
                         </span>
 
                     <input type="text" class="form-control form-control-solid w-250px ps-15 border-gray-300 border-1" id="general-search-inp" placeholder="{{ __("Search ...") }}">
@@ -66,7 +66,7 @@
                                 <i class="fa fa-plus fa-lg"></i>
                             </span>
 
-                        {{ __("Add new admin") }}
+                        {{ __("add new admin") }}
 
                     </a>
                     <!-- end   :: Add Button -->
@@ -80,7 +80,7 @@
             <!-- end   :: Filter -->
 
             <!-- begin :: Datatable -->
-            <table data-ordering="false" id="kt_datatable" class="table text-center table-row-dashed fs-6 gy-5">
+            <table data-ordering="false" id="kt_datatable" class="table text-center table-row-dashed fs-6 gy-5" style="vertical-align: middle;">
 
                 <thead>
                 <tr class="text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
@@ -108,6 +108,9 @@
 
 @endsection
 @push('scripts')
+    <script>
+        let lightboxPath = "{{ asset('dashboard-assets/plugins/custom/fslightbox/fslightbox.bundle.js') }}";
+    </script>
     <script src="{{ asset('js/dashboard/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('js/dashboard/datatables/admins.js') }}"></script>
     <script>

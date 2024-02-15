@@ -22,3 +22,4 @@ Route::group(['namespace' => 'Auth' , 'middleware' => 'set_locale'] , function (
 });
 
 
+

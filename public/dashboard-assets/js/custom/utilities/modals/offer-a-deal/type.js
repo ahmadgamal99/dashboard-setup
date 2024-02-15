@@ -18,12 +18,12 @@ var KTModalOfferADealType = function () {
 					'offer_type': {
 						validators: {
 							notEmpty: {
-								message: 'Coupon type is required'
+								message: 'Offer type is required'
 							}
 						}
 					}
 				},
-
+				
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),
 					bootstrap: new FormValidation.plugins.Bootstrap5({
@@ -41,7 +41,7 @@ var KTModalOfferADealType = function () {
 			// Prevent default button action
 			e.preventDefault();
 
-			// Disable button to avoid multiple click
+			// Disable button to avoid multiple click 
 			nextButton.disabled = true;
 
 			// Validate form before submit
@@ -60,14 +60,14 @@ var KTModalOfferADealType = function () {
 
 							// Enable button
 							nextButton.disabled = false;
-
+							
 							// Go to next step
 							stepper.goNext();
-						}, 1000);
+						}, 1000);   						
 					} else {
 						// Enable button
 						nextButton.disabled = false;
-
+						
 						// Show popup warning. For more info check the plugin's official documentation: https://sweetalert2.github.io/
 						Swal.fire({
 							text: "Sorry, looks like there are some errors detected, please try again.",
@@ -80,7 +80,7 @@ var KTModalOfferADealType = function () {
 						});
 					}
 				});
-			}
+			}			
 		});
 	}
 

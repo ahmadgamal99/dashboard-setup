@@ -13339,27 +13339,27 @@
           return write('uid-', component.element);
         });
       };
-      var failOnDuplicate = function (component, tag_id) {
-        var conflict = components[tag_id];
+      var failOnDuplicate = function (component, tagId) {
+        var conflict = components[tagId];
         if (conflict === component) {
           unregister(component);
         } else {
-          throw new Error('The tag_id "' + tag_id + '" is already used by: ' + element(conflict.element) + '\nCannot use it for: ' + element(component.element) + '\n' + 'The conflicting element is' + (inBody(conflict.element) ? ' ' : ' not ') + 'already in the DOM');
+          throw new Error('The tagId "' + tagId + '" is already used by: ' + element(conflict.element) + '\nCannot use it for: ' + element(component.element) + '\n' + 'The conflicting element is' + (inBody(conflict.element) ? ' ' : ' not ') + 'already in the DOM');
         }
       };
       var register = function (component) {
-        var tag_id = readOrTag(component);
-        if (hasNonNullableKey(components, tag_id)) {
-          failOnDuplicate(component, tag_id);
+        var tagId = readOrTag(component);
+        if (hasNonNullableKey(components, tagId)) {
+          failOnDuplicate(component, tagId);
         }
         var extraArgs = [component];
-        events.registerId(extraArgs, tag_id, component.events);
-        components[tag_id] = component;
+        events.registerId(extraArgs, tagId, component.events);
+        components[tagId] = component;
       };
       var unregister = function (component) {
-        read$1(component.element).each(function (tag_id) {
-          delete components[tag_id];
-          events.unregisterId(tag_id);
+        read$1(component.element).each(function (tagId) {
+          delete components[tagId];
+          events.unregisterId(tagId);
         });
       };
       var filter = function (type) {
@@ -44078,27 +44078,27 @@
           return write('uid-', component.element);
         });
       };
-      var failOnDuplicate = function (component, tag_id) {
-        var conflict = components[tag_id];
+      var failOnDuplicate = function (component, tagId) {
+        var conflict = components[tagId];
         if (conflict === component) {
           unregister(component);
         } else {
-          throw new Error('The tag_id "' + tag_id + '" is already used by: ' + element(conflict.element) + '\nCannot use it for: ' + element(component.element) + '\n' + 'The conflicting element is' + (inBody(conflict.element) ? ' ' : ' not ') + 'already in the DOM');
+          throw new Error('The tagId "' + tagId + '" is already used by: ' + element(conflict.element) + '\nCannot use it for: ' + element(component.element) + '\n' + 'The conflicting element is' + (inBody(conflict.element) ? ' ' : ' not ') + 'already in the DOM');
         }
       };
       var register = function (component) {
-        var tag_id = readOrTag(component);
-        if (hasNonNullableKey(components, tag_id)) {
-          failOnDuplicate(component, tag_id);
+        var tagId = readOrTag(component);
+        if (hasNonNullableKey(components, tagId)) {
+          failOnDuplicate(component, tagId);
         }
         var extraArgs = [component];
-        events.registerId(extraArgs, tag_id, component.events);
-        components[tag_id] = component;
+        events.registerId(extraArgs, tagId, component.events);
+        components[tagId] = component;
       };
       var unregister = function (component) {
-        read(component.element).each(function (tag_id) {
-          delete components[tag_id];
-          events.unregisterId(tag_id);
+        read(component.element).each(function (tagId) {
+          delete components[tagId];
+          events.unregisterId(tagId);
         });
       };
       var filter = function (type) {

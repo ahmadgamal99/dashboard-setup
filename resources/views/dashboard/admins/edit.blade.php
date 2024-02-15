@@ -1,4 +1,4 @@
-@extends('partials.dashboard.master')
+@extends('partials.master')
 @section('content')
 
     <!-- begin :: Subheader -->
@@ -43,6 +43,7 @@
             <form action="{{ route('dashboard.admins.update',$admin->id) }}" class="form submitted-form" method="post"  data-redirection-url="{{ route('dashboard.admins.index') }}">
                 @csrf
                 @method('PUT')
+
                 <!-- begin :: Card header -->
                 <div class="card-header d-flex align-items-center">
                     <h3 class="fw-bolder text-dark">{{ __("Edit an admin") . " : " . $admin->name  }}</h3>
@@ -109,11 +110,11 @@
 
                             <label class="fs-5 fw-bold mb-2">{{ __("Roles") }}</label>
                             <div class="form-floating">
-                            <select class="form-select py-1" data-control="select2" name="roles[]" multiple id="roles-sp" data-placeholder="{{ __("Choose the roles") }}" data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}" >
-                                @foreach( $roles as $role)
-                                    <option value="{{ $role->id }}" {{ $admin->roles->pluck('id')->contains( $role->id ) ? 'selected' : '' }}> {{ $role->name }} </option>
-                                @endforeach
-                            </select>
+                                <select class="form-select py-1" data-control="select2" name="roles[]" multiple id="roles-sp" data-placeholder="{{ __("Choose the roles") }}" data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}" >
+                                    @foreach( $roles as $role)
+                                        <option value="{{ $role->id }}" {{ $admin->roles->pluck('id')->contains( $role->id ) ? 'selected' : '' }}> {{ $role->name }} </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <p class="invalid-feedback" id="roles" ></p>
 

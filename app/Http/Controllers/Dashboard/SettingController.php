@@ -72,7 +72,7 @@ class SettingController extends Controller
             $request->validate([
                 $keyName   => [ 'bail' ,'image', 'mimes:jpeg,jpg,png,gif,svg,webp', 'max:2048' ]
             ]);
-            $data[$keyName] = uploadImage( $request->file($keyName) , "Settings");
+            $data[$keyName] = uploadFile( $request->file($keyName) , "Settings");
         }
 
     }

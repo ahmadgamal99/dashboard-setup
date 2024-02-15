@@ -27,23 +27,18 @@ class AdminAuthController extends Controller
     {
 
         $request->validate([
-            'email'   => 'required|email|exists:admins',
+            'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
 
 
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember_me'))) {
+        if (!Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember_me'))) {
 
-            return redirect()->intended('/dashboard');
-
-        }else
-        {
             throw ValidationException::withMessages([
-                "password" => __("The password is incorrect"),
+                "password" => __("There was an error with your E-Mail/Password"),
             ]);
-        }
 
-        return back()->withInput($request->only('email', 'remember'));
+        }
 
     }
 
@@ -51,7 +46,6 @@ class AdminAuthController extends Controller
     public function logout()
     {
         Auth::guard('admin')->logout();
-        cache()->flush();
         return redirect()->route('admin.login');
     }
 }

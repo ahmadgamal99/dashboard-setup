@@ -1,4 +1,4 @@
-@extends('partials.dashboard.master')
+@extends('partials.master')
 @section('content')
 
     <!-- begin :: Subheader -->
@@ -22,7 +22,7 @@
                 <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
                     <!-- begin :: Item -->
                     <li class="breadcrumb-item text-muted">
-                        {{ __("Add new admin") }}
+                        {{ __("add new admin") }}
                     </li>
                     <!-- end   :: Item -->
                 </ul>
@@ -41,9 +41,9 @@
             <!-- begin :: Form -->
             <form action="{{ route('dashboard.admins.store') }}" class="form submitted-form" method="post"  data-redirection-url="{{ route('dashboard.admins.index') }}">
             @csrf
-            <!-- begin :: Card header -->
+                <!-- begin :: Card header -->
                 <div class="card-header d-flex align-items-center">
-                    <h3 class="fw-bolder text-dark">{{ __("Add new admin") }}</h3>
+                    <h3 class="fw-bolder text-dark">{{ __("add new admin") }}</h3>
                 </div>
                 <!-- end   :: Card header -->
 

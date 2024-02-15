@@ -1,4 +1,4 @@
-@extends('partials.dashboard.master')
+@extends('partials.master')
 @section('content')
 
     <!-- begin :: Subheader -->
@@ -119,7 +119,7 @@
                         <img src="{{ asset('dashboard-assets/media/illustrations/sketchy-1/4.png') }}" alt="" class="mw-100 mh-150px mb-7">
                         <!--end::Illustration-->
                         <!--begin::Label-->
-                        <div class="fw-bolder fs-3 text-gray-600 text-hover-primary">{{ __("Add new role") }}</div>
+                        <div class="fw-bolder fs-3 text-gray-600 text-hover-primary">{{ __("add new role") }}</div>
                         <!--end::Label-->
                     </button>
                     <!--begin::Button-->
@@ -162,7 +162,7 @@
                 <!--begin::Modal body-->
                 <div class="modal-body scroll-y mx-lg-5 my-7">
                     <!--begin::Form-->
-                    <form  id="role_form_add" data-form-type="add" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework submitted-form" action="{{ route('dashboard.roles.store') }}" data-redirection-url="/roles">
+                    <form  id="role_form_add" data-form-type="add" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework submitted-form" action="{{ route('dashboard.roles.store') }}" data-redirection-url="/dashboard/roles">
                         @csrf
                         <!--begin::Scroll-->
                         <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_role_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_role_header" data-kt-scroll-wrappers="#kt_modal_add_role_scroll" data-kt-scroll-offset="300px" style="max-height: 637px;">

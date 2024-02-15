@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Middleware;
-
 use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
-
 
 class Authenticate extends Middleware
 {
@@ -20,7 +18,7 @@ class Authenticate extends Middleware
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        if ( !auth()->check() )
+        if ( !auth('admin')->check() )
             return redirect()->to('admin/login');
 
         return $next($request);

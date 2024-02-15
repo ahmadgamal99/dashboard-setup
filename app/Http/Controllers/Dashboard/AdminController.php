@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Models\Role;
+use App\Models\Team;
+use App\Models\Admin;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
-use App\Models\Admin;
-use App\Models\Role;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -19,7 +20,7 @@ class AdminController extends Controller
 
         if ($request->ajax())
         {
-            $data = getModelData( model: new Admin() , andsFilters: [['email', '!=', 'support@test.com']] );
+            $data = getModelData( model: new Admin(), andsFilters: [['email', '!=', 'support@xample.com']] );
 
             return response()->json($data);
         }
@@ -41,7 +42,6 @@ class AdminController extends Controller
     {
 
         $this->authorize('show_admins');
-
         $roles = Role::select('id','name_' . getLocale() )->get();
 
         return view('dashboard.admins.show',compact('admin','roles'));
@@ -58,22 +58,19 @@ class AdminController extends Controller
 
     public function store(StoreAdminRequest $request)
     {
-        $data           = $request->validated();
-        $data['status'] = ( bool ) request('status');
-        $admin       = Admin::create($data);
+        $data  = $request->validated();
+        $admin = Admin::create($data);
 
         $rolesAndDefaultOne = array_merge( $request['roles'] , [ "2" ] );
 
         $admin->roles()->attach( $rolesAndDefaultOne );
+        $admin->teams()->attach( $request['teams'] ?? [] );
 
     }
 
     public function update(UpdateAdminRequest $request , Admin $admin)
     {
         $data = $request->validated();
-
-        $data['status']               = ( bool ) request('status');
-        $data['needs_to_clear_cache'] = true; // update the cache to this admin
 
         $admin->update($data);
 
@@ -97,15 +94,9 @@ class AdminController extends Controller
 
         $data = $request->validate([
             'name'     => ['required', 'string', 'max:255'],
-            'phone'    => ['required','string','max:255','unique:admins,id,' . auth()->id() ,'regex:/(^(009665|9665|\+9665|966|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$)/u'],
+            'phone'    => ['required','numeric','unique:admins,id,' . auth()->id()],
             'email'    => ['required','string','email','unique:admins,id,' . auth()->id() ],
-            'image'    => ['nullable','mimes:jpeg,jpg,png,gif,svg' , 'max:10000'] ,
         ]);
-
-        if ( $request->has('image') )
-            $data['image'] = uploadImage( $request->file('image') , 'Admins' );
-        else
-            $data['image'] = auth()->user()->image;
 
         auth()->user()->update($data);
 

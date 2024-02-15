@@ -1,4 +1,4 @@
-@extends('partials.dashboard.master')
+@extends('partials.master')
 @section('content')
 
 
@@ -27,15 +27,15 @@
                                 <span class="svg-icon svg-icon-4 me-1">
                                     <i class="fas fa-briefcase"></i>
                                 </span>
-                                    <!--end::Svg Icon-->
+                                <!--end::Svg Icon-->
                             @foreach (auth()->user()->roles as $role)
-                                        @if ($loop->first)
-                                            {{ $role->name }}
-                                        @else
-                                            {{ ',' . $role->name }}
+                                @if ($loop->first)
+                                    {{ $role->name }}
+                                @else
+                                    {{ ',' . $role->name }}
 
-                                        @endif
-                                    @endforeach
+                                @endif
+                            @endforeach
                             </span>
 
                             </div>
@@ -76,8 +76,23 @@
                     @method('PUT')
                     <!--begin::Card body-->
                     <div class="card-body  p-9">
-                        <!--begin::Input group-->
 
+                        <!--begin::Input group-->
+                        <div class="row mb-15">
+                            <label class="col-lg-2 required fs-5 fw-bold mb-2 d-flex align-items-center">{{ __("Photo identification") }}</label>
+
+                            <div class="col-lg-10 form-floating text-center">
+
+                                <!--begin::Image input-->
+                                <x-dashboard.upload-image-inp name="photo_identification" :image="auth()->user()->photo_identification" directory="Admins" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
+                                <p class="invalid-feedback" id="photo_identification"></p>
+                                <!--end::Image input-->
+
+                            </div>
+                        </div>
+                        <!--end::Input group-->
+
+                        <!--begin::Input group-->
                         <div class="row mb-6">
                             <label class="col-lg-2 required fs-5 fw-bold mb-2 d-flex align-items-center">{{ __("Name") }}</label>
 
@@ -87,19 +102,19 @@
                                 <p class="invalid-feedback" id="name" ></p>
                             </div>
                         </div>
-
                         <!--end::Input group-->
+
                         <!--begin::Input group-->
                         <div class="row mb-6">
                             <!--begin::Label-->
                             <label class="col-lg-2 col-form-label required fw-bold fs-6 d-flex align-items-center">{{ __("Phone") }}</label>
                             <!--end::Label-->
                             <!--begin::Col-->
-                            <div class="col-lg-10 form-floating">
-                                <input type="text" class="form-control" id="phone_inp" name="phone" placeholder="example" value="{{ auth()->user()->phone }}"/>
-                                <label style="margin-right:8px" for="phone_inp">{{ __("Enter the phone") }}</label>
-                                <p class="invalid-feedback" id="phone" ></p>
-                            </div>
+                                <div class="col-lg-10 form-floating">
+                                    <input type="text" class="form-control" id="phone_inp" name="phone" placeholder="example" value="{{ auth()->user()->phone }}"/>
+                                    <label style="margin-right:8px" for="phone_inp">{{ __("Enter the phone") }}</label>
+                                    <p class="invalid-feedback" id="phone" ></p>
+                                </div>
                             <!--end::Col-->
                         </div>
                         <!--end::Input group-->
@@ -109,11 +124,11 @@
                             <label class="col-lg-2 col-form-label required fw-bold fs-6 d-flex align-items-center">{{ __("Email") }}</label>
                             <!--end::Label-->
                             <!--begin::Col-->
-                            <div class="col-lg-10 form-floating">
-                                <input type="text" class="form-control" id="email_inp" name="email" placeholder="example" value="{{ auth()->user()->email }}"/>
-                                <label style="margin-right:8px" for="email_inp">{{ __("Enter the email") }}</label>
-                                <p class="invalid-feedback" id="email" ></p>
-                            </div>
+                                <div class="col-lg-10 form-floating">
+                                    <input type="text" class="form-control" id="email_inp" name="email" placeholder="example" value="{{ auth()->user()->email }}"/>
+                                    <label style="margin-right:8px" for="email_inp">{{ __("Enter the email") }}</label>
+                                    <p class="invalid-feedback" id="email" ></p>
+                                </div>
                             <!--end::Col-->
                         </div>
                         <!--end::Input group-->

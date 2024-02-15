@@ -30,7 +30,7 @@ $('.edit-role-btn').click( function () {
     $('.edit-checkbox').prop('checked',false);
 
     $.ajax({
-        url:"/roles/" + roleId,
+        url:"/dashboard/roles/" + roleId,
         method:"GET",
         success:function (response) {
 
@@ -43,7 +43,7 @@ $('.edit-role-btn').click( function () {
             $("#name_en_inp_edit").val( response['name_en'] );
 
             // set the route to the update form
-            $("#role_form_update").attr('action',`/roles/${roleId}`);
+            $("#role_form_update").attr('action',`/dashboard/roles/${roleId}`);
 
             // set the abilities of the role to checkboxes
             response['role_abilities'].forEach(function (element) {

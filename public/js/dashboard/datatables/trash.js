@@ -40,6 +40,7 @@
             handleDeleteRows();
             handleRestoreRows();
             KTMenu.createInstances();
+            $('body').append(`<script src='${lightboxPath}' ></script>`)
         });
     }
 
@@ -51,9 +52,8 @@
         $('.delete-row').click(function () {
 
             let rowId = $(this).data('row-id');
-            let type  = $(this).data('type');
 
-            deleteAlert(type).then(function (result) {
+            deleteAlert().then(function (result) {
 
                 if (result.value) {
 
@@ -67,7 +67,7 @@
 
                             setTimeout( () => {
 
-                                successAlert(`${translate('You have deleted the') + ' ' + type + ' ' + translate('successfully !')} `)
+                                successAlert(`${translate('You have deleted this item successfully !')} `)
                                     .then(function () {
                                         datatable.draw();
                                     });

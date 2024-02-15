@@ -2,7 +2,7 @@
 <html lang="{{ getLocale() }}" direction="{{ isArabic() ? 'ltr' : 'rtl' }}" style="direction:{{ app()->getLocale() == 'ar' ? 'ltr' : 'rtl' }}">
 <!--begin::Head-->
 <head>
-    <title>Dashboard</title>
+    <title>{{ __('Dashboard') }}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -22,12 +22,13 @@
     <link href="{{ asset('dashboard-assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{  asset('dashboard-assets/css/style'  . '.bundle' . ( isArabic() ? '.rtl' : '' ) . '.css')}}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
+
 </head>
 <!--end::Head-->
 <!--begin::Body-->
 <body id="kt_body" class="app-blank app-blank bgi-size-cover bgi-position-center bgi-no-repeat bg-dark">
 <!--begin::Theme mode setup on page load-->
-<script>var defaultThemeMode = "light"; var themeMode; if ( document.documentElement ) { if ( document.documentElement.hasAttribute("data-theme-mode")) { themeMode = document.documentElement.getAttribute("data-theme-mode"); } else { if ( localStorage.getItem("data-theme") !== null ) { themeMode = localStorage.getItem("data-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-theme", themeMode); }</script>
+<script>let defaultThemeMode = "light"; let themeMode; if ( document.documentElement ) { if ( document.documentElement.hasAttribute("data-theme-mode")) { themeMode = document.documentElement.getAttribute("data-theme-mode"); } else { if ( localStorage.getItem("data-theme") !== null ) { themeMode = localStorage.getItem("data-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-theme", themeMode); }</script>
 <!--end::Theme mode setup on page load-->
 <!--begin::Root-->
 <div class="d-flex flex-column flex-root" id="kt_app_root">
@@ -53,16 +54,16 @@
         <!--begin::Body-->
         <div class="d-flex flex-column-fluid flex-lg-row-auto justify-content-center justify-content-lg-end p-12">
             <!--begin::Wrapper-->
-            <div class="bg-body d-flex flex-center rounded-4 w-md-600px p-10">
+            <div class="bg-body d-flex flex-center rounded-4 w-md-600px p-10" >
                 <!--begin::Content-->
                 <div class="w-md-400px" style="direction:{{ isArabic() ? 'rtl' : 'ltr' }}" >
                     <!--begin::Form-->
-                    <form class="form w-100 submitted-form"  data-success-message="{{ __("Signed in successfully") }}" data-redirection-url="/" action="{{ route('admin.login') }}" method="POST">
-                        @csrf
-                        <!--begin::Heading-->
+                    <form class="form w-100 submitted-form"  data-success-message="{{ __("Signed in successfully") }}" data-redirection-url="{{ url()->previous() != request()->root() ?  url()->previous() : '/' }}" action="{{ route('admin.login') }}" method="POST">
+                    @csrf
+                    <!--begin::Heading-->
                         <div class="text-center mb-10">
                             <!--begin::Title-->
-                            <h1 class="text-dark mb-3">{{ __('Sign In to Dashboard') }}</h1>
+                            <h1 class="text-muted my-8">{{ __('Dashboard') }}</h1>
                             <!--end::Title-->
                         </div>
                         <!--begin::Heading-->
@@ -116,6 +117,19 @@
                         <!--end::Actions-->
                     </form>
                     <!--end::Form-->
+
+                    <!--begin::Footer-->
+                    <div class="d-flex flex-center flex-column-auto p-10">
+                        <!--begin::Links-->
+                        <div class="d-flex align-items-center fw-bold fs-6">
+                            {{ __('Developed By') }}
+                            <a href="https://example.com/" target="_blank" class="px-2">
+                                Dashboard
+                            </a>
+                        </div>
+                        <!--end::Links-->
+                    </div>
+                    <!--end::Footer-->
                 </div>
                 <!--end::Content-->
             </div>
@@ -133,8 +147,8 @@
 <script src="{{ asset('dashboard-assets/plugins/global/plugins.bundle.js') }}"></script>
 <script src="{{ asset('dashboard-assets/js/scripts.bundle.js') }}"></script>
 <script src="{{ asset('js/translations.js') }}"></script>
-<script src="{{ asset('js/dashboard/global_scripts.js') }}"></script>
+<script src="{{ asset('js/global_scripts.js') }}"></script>
 <!--end::Javascript-->
 </body>
 <!--end::Body-->
-</html>Z
+</html>

@@ -17,14 +17,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $categories  =
-        [
-            'admins',
-            'roles',
-            'settings',
-            'recycle_bin',
-            'reports',
-        ];
+        $categories  = Role::$modules;
 
         $actions =
         [
@@ -73,6 +66,26 @@ class RoleSeeder extends Seeder
             'name_en'    => 'default roles',
         ]);
 
+        Role::create([
+            'name_ar'    => 'العمليات',
+            'name_en'    => 'Operation',
+        ]);
+
+        Role::create([
+            'name_ar'    => 'السلامة',
+            'name_en'    => 'Safety',
+        ]);
+
+        Role::create([
+            'name_ar'    => 'Fleet',
+            'name_en'    => 'Fleet',
+        ]);
+
+        Role::create([
+            'name_ar'    => 'المالية',
+            'name_en'    => 'Finance',
+        ]);
+
 
         $superAdminAbilitiesIds = Ability::pluck('id');
         $adminAbilitiesIds   = Ability::whereIn('category',[ 'admins' , 'roles' , 'settings' ] )->whereIn('action' , ['view'])->get();
@@ -80,10 +93,9 @@ class RoleSeeder extends Seeder
         $superAdminRole->abilities()->attach( $superAdminAbilitiesIds );
         $adminRole->abilities()->attach( $adminAbilitiesIds );
 
-        Admin::find(1)->assignRole($superAdminRole);
-        Admin::find(1)->assignRole($adminRole);
-        Admin::find(2)->assignRole($superAdminRole);
-        Admin::find(2)->assignRole($adminRole);
+        Admin::first()->assignRole($superAdminRole);
+        Admin::first()->assignRole($adminRole);
+
 
     }
 }

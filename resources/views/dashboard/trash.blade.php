@@ -1,4 +1,4 @@
-@extends('partials.dashboard.master')
+@extends('partials.master')
 @push('styles')
     <link href="{{ asset('dashboard-assets/css/datatables' . ( isDarkMode() ?  '.dark' : '' ) .'.bundle.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('dashboard-assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css"/>
@@ -9,12 +9,18 @@
         }
 
         .activeTab, .activeTab i{
-            color: #00773d;
-            background-color: #fff !important;
+            color: #0095E8;
+            background-color: #f3f3f3 !important;
+        }
+
+        .activeTab, .activeTab p{
+            color: #0095E8;
+            background-color: #f3f3f3 !important;
         }
 
         .trashTab{
-            background-color: #eeeeee;
+            color: white;
+            background-color: #1E1E2D;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             cursor: pointer
@@ -26,9 +32,9 @@
 
 <div class="row justify-content-center">
 
-    <div class="trashTab col card  text-center h2 py-5 mb-0 text-hover-primary" data-model="Admin" >
+    <div class="trashTab col card  text-center h2 py-5 mb-0" data-model="Admin" >
         <i class="fa fa-users headerIcons"></i>
-        <span>{{ __("Admins") }}</span>
+        <p class="my-3">{{ __("Admins") }}</p>
     </div>
 
 
@@ -69,7 +75,9 @@
 
 @endsection
 @push('scripts')
-
+    <script>
+        let lightboxPath = "{{ asset('dashboard-assets/plugins/custom/fslightbox/fslightbox.bundle.js') }}";
+    </script>
     <script>
         let tabs          = $('.trashTab');
         let tableHeader   = $('thead tr').first();

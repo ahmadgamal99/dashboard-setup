@@ -19,6 +19,37 @@ class Role extends Model
         'updated_at' => 'date:Y-m-d'
     ];
 
+    public static $modules = [
+        'admins',
+        'roles',
+        'certificates',
+        'certificates_categories',
+        'certificates_transactions',
+        'contractors',
+        'distances',
+        'finances',
+        'finances_types',
+        'installation_orders',
+        'installation_orders_items',
+        'installation_orders_tasks',
+        'jobs',
+        'locations',
+        'locations_types',
+        'materials',
+        'materials_groups',
+        'materials_prices',
+        'petty_cashes',
+        'petty_cashes_types',
+        'pickup_orders',
+        'status_trackers',
+        'teams',
+        'vehicles',
+        'vehicles_maintenance',
+        'settings',
+        'recycle_bin',
+        'reports',
+    ];
+
     protected static function booted()
     {
         static::addGlobalScope(new WithoutDefaultRole());

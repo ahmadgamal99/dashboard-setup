@@ -45420,3 +45420,19 @@ body {
     padding-top: 2rem;
 }
 
+.navbar-brand{
+    font-family: Roboto Condensed;
+    font-weight: 700;
+    letter-spacing: -2px;
+    text-transform: none;
+    color:white;
+    font-size:24px
+}
+
+.navbar-brand:hover{
+    color: #cccccc;
+}
+
+.select2-selection{
+    height: 50.75px !important;
+}
