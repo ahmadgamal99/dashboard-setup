@@ -30,7 +30,6 @@ class SettingController extends Controller
            'email'                                            => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
            'phone'                                            => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
            'whatsapp'                                         => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
-           'tax'                                              => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
            'maintenance_mode'                                 => [ 'required_if:setting_type,general' ,'nullable' , 'string' , 'max:255'  ],
            'meta_tag_description_ar'                          => [ 'required_if:setting_type,seo'     ,'nullable' , 'string' , 'max:255'  ],
            'meta_tag_description_en'                          => [ 'required_if:setting_type,seo'     ,'nullable' , 'string' , 'max:255'  ],
@@ -40,10 +39,6 @@ class SettingController extends Controller
            'privacy_policy_en'                                => [ 'required_if:setting_type,website' ,'nullable' , 'string' ],
            'terms_and_conditions_en'                          => [ 'required_if:setting_type,website' ,'nullable' , 'string' ],
            'terms_and_conditions_ar'                          => [ 'required_if:setting_type,website' ,'nullable' , 'string' ],
-           'about_us_ar'                                      => [ 'required_if:setting_type,about-website' ,'nullable' , 'string' ],
-           'about_us_en'                                      => [ 'required_if:setting_type,about-website' ,'nullable' , 'string' ],
-           'footer_text_ar'                                   => [ 'required_if:setting_type,about-website' ,'nullable' , 'string', 'max:255' ],
-           'footer_text_en'                                   => [ 'required_if:setting_type,about-website' ,'nullable' , 'string', 'max:255' ],
         ]);
 
 

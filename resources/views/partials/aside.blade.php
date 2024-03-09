@@ -30,7 +30,7 @@
 
                 @canany(['view_roles' , 'view_admins' , 'view_settings'])
                     <div class="menu-item mb-3">
-                        <div class="menu-content pt-8 pb-0">
+                        <div class="menu-content pt-8">
                             <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __("Settings") }}</span>
                         </div>
                     </div>

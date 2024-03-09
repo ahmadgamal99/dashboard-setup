@@ -63,8 +63,6 @@ class RoleController extends Controller
             'abilities' => ['required', 'array'  , 'min:1'],
         ]);
 
-
-
         $role = Role::create($data);
 
         $role->abilities()->attach($request['abilities']);
@@ -82,9 +80,9 @@ class RoleController extends Controller
             'abilities' => ['required', 'array'  , 'min:1'],
         ]);
 
-        if ( $role->id == 1 ){
+        // super admin role
+        if ( $role->id == 1 )
             abort(404);
-        }
 
 
         $role->update($data);

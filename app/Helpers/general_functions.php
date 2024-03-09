@@ -4,6 +4,8 @@
 use App\Http\Classes\AppSetting;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 if ( !function_exists('isArabic') ) {
 
@@ -147,15 +149,14 @@ if(!function_exists('isTabOpen')){
 if(!function_exists('abilities')){
     function abilities()
     {
-        if(is_null( cache()->get('abilities') ))
+        $cacheKey = 'admin_' . auth('admin')->id();
+        if(is_null( cache()->get($cacheKey) ))
         {
-            $abilities = Cache::remember('abilities', 60, function() {
+            $abilities = Cache::remember($cacheKey, 60, function() {
                 return auth('admin')->user()->abilities();
             });
         }else
-        {
-            $abilities = cache()->get('abilities');
-        }
+            $abilities = cache()->get($cacheKey);
 
 
         return $abilities;

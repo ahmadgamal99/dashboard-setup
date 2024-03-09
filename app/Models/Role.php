@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Http\Scopes\WithoutDefaultRole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,14 +21,8 @@ class Role extends Model
         'admins',
         'roles',
         'settings',
-        'recycle_bin',
         'reports'
     ];
-
-    protected static function booted()
-    {
-        static::addGlobalScope(new WithoutDefaultRole());
-    }
 
     public function getNameAttribute()
     {

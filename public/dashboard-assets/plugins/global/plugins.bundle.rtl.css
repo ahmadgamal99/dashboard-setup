@@ -32744,7 +32744,7 @@ i[class^=fonticon-]:before, i[class*=" fonticon-"]:before {
   padding-bottom: 0.575rem;
 }
 .select2-container--bootstrap5 .select2-selection--multiple:not(.form-select-sm):not(.form-select-lg) .select2-selection__choice {
-  border-radius: 0;
+  border-radius: 0.4rem;
   padding: 0.1rem 0.5rem;
   margin-right: 0.5rem;
   margin-top: 0.1rem;
@@ -32895,8 +32895,9 @@ i[class^=fonticon-]:before, i[class*=" fonticon-"]:before {
   mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var%28--kt-primary%29'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e");
 }
 
+
 .form-floating .form-select {
-  padding-top: 1.85rem !important;
+    padding-top: 0 !important;
 }
 
 .fv-plugins-message-container {

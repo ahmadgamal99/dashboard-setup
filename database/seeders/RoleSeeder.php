@@ -32,7 +32,6 @@ class RoleSeeder extends Seeder
         // indices of unused actions from the above array
         $exceptions = [
             'settings'            => [ 'unused_actions' => [ 1,2,4 ]       , 'extra_actions' => [] ], // 1,2,4 are the indices of unused action from $actions array
-            'recycle_bin'         => [ 'unused_actions' => [ 1,2,3 ]       , 'extra_actions' => ['restore'] ],
         ];
 
 
@@ -61,20 +60,11 @@ class RoleSeeder extends Seeder
         ]);
 
 
-        $adminRole  = Role::create([
-            'name_ar'    => 'صلاحيات إفتراضية',
-            'name_en'    => 'default roles',
-        ]);
-
-
         $superAdminAbilitiesIds = Ability::pluck('id');
-        $adminAbilitiesIds   = Ability::whereIn('category',[ 'admins' , 'roles' , 'settings' ] )->whereIn('action' , ['view'])->get();
 
         $superAdminRole->abilities()->attach( $superAdminAbilitiesIds );
-        $adminRole->abilities()->attach( $adminAbilitiesIds );
 
         Admin::first()->assignRole($superAdminRole);
-        Admin::first()->assignRole($adminRole);
 
 
     }

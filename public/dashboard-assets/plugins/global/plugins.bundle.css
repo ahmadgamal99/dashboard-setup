@@ -32744,7 +32744,7 @@ i[class^=fonticon-]:before, i[class*=" fonticon-"]:before {
   padding-bottom: 0.575rem;
 }
 .select2-container--bootstrap5 .select2-selection--multiple:not(.form-select-sm):not(.form-select-lg) .select2-selection__choice {
-  border-radius: 0;
+  border-radius: 0.4rem;
   padding: 0.1rem 0.5rem;
   margin-right: 0.5rem;
   margin-top: 0.1rem;
@@ -32896,7 +32896,7 @@ i[class^=fonticon-]:before, i[class*=" fonticon-"]:before {
 }
 
 .form-floating .form-select {
-  padding-top: 1.85rem !important;
+  padding-top: 0 !important;
 }
 
 .fv-plugins-message-container {

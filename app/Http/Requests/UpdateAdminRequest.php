@@ -23,10 +23,9 @@ class UpdateAdminRequest extends FormRequest
 
         return [
             'name'     => ['required', 'string', 'max:255'],
-            'phone'    => ['required','numeric','unique:admins,id,' . $id ],
+            'phone'    => ['nullable','numeric','unique:admins,id,' . $id ],
             'email'    => ['required','string','email','unique:admins,id,' . $id ],
             'roles'    => ['required','array','min:1'],
-            'teams'    => ['nullable','array','min:1'],
             'password' => ['nullable','exclude_if:password,null','string','min:6','max:255','confirmed'],
             'password_confirmation' => ['nullable','exclude_if:password_confirmation,null','same:password'],
             'photo_identification'  => ['bail', 'nullable', 'file', 'mimes:jpg,jpeg,png,bmp,gif,svg,webp,pdf','max:4096'],

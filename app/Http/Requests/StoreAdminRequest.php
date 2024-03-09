@@ -25,10 +25,9 @@ class StoreAdminRequest extends FormRequest
     {
         return [
             'name'      => ['required', 'string', 'max:255'],
-            'phone'     => ['required','numeric','unique:admins'],
+            'phone'     => ['nullable','numeric','unique:admins'],
             'email'     => ['required','string','email','unique:admins'],
             'roles'     => ['required','array','min:1'],
-            'teams'     => ['nullable','array','min:1'],
             'password'  => ['required','string','min:6','max:255','confirmed'],
             'password_confirmation' => ['required','same:password'],
             'photo_identification'  => ['bail', 'required', 'file', 'mimes:jpg,jpeg,png,bmp,gif,svg,webp,pdf','max:4096'],
